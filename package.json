@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --watch . --ext ts --exec node ./bot.ts"
+  },
+  "dependencies": {
+    "@jerrycoder/instagram-api": "^2.5.9",
+    "dotenv": "^17.4.2",
+    "grammy": "^1.45.1",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2"
+  }
+}
