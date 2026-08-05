@@ -12,7 +12,7 @@ type InstagramData = {
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const bot = new Bot("1872711166:AAF0hvZd_k8o8zXEFzn1-SKl9kktSerWDiI"); // <-- put your bot token between the ""
+const bot = new Bot(process.env.BOT_TOKEN); // <-- put your bot token between the ""
 
 // Bot Command Router Example
 bot.command("start", (ctx) => ctx.reply("Selamat datang di Arrijal Bot!"));
