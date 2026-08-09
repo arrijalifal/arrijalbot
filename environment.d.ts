@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       PORT: string;
       BOT_TOKEN: string;
+      BOT_CREATOR: number;
     }
   }
 }

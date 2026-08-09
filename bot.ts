@@ -6,7 +6,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 type InstagramData = {
-  type: "image" | "video";
+  type: "image" | "video" | "mp4";
   url: string;
   thumbnail: string | null;
 } & Record<`media_url_${number}`, string>;
@@ -42,11 +42,12 @@ bot.on("message::url", async (ctx) => {
           await delay(1000);
         }
         return await ctx.reply(`Downloaded ${mediaUrls.length} photos`);
-      } else if (igUrl.type === "video") {
+      } else if (igUrl.type === "video" || igUrl.type === "mp4") {
         await ctx.replyWithChatAction("upload_video");
         return await ctx.replyWithVideo(new InputFile(new URL(igUrl.url)));
       }
-      return ctx.reply(`${igUrl.type}\n${Object.keys(igUrl)}`);
+      ctx.reply(`Sorry, this link cannot be processed!`);
+      return ctx.api.sendMessage(process.env.BOT_CREATOR, `Instagram: <code>${igUrl.type}</code>\n${Object.keys(igUrl)}\n\nUser: ${ctx.from?.id}`, {parse_mode: "HTML"});
     } catch (error) {
       return ctx.reply(`Terdapat error:\n${error}`);
     }
